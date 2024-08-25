@@ -1,0 +1,57 @@
+/* Estilos para el header */
+header.bg-image {
+    background-image: url('assets/img/estudiantes.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Cambia la opacidad según sea necesario */
+    z-index: 1;
+}
+
+header .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+header h1 {
+    color: #fff; /* Color blanco para el texto */
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+header p {
+    color: #fff; /* Color blanco para el texto */
+    font-size: 1.25rem;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+}
+
+header .btn {
+    margin-bottom: 1rem;
+}
+
+header .divider-custom {
+    margin-top: 1rem;
+}
+
+header .divider-custom .divider-custom-line {
+    background-color: #fff;
+}
+
+header .divider-custom .divider-custom-icon i {
+    color: #fff;
+}
