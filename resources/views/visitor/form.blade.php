@@ -36,6 +36,6 @@
     <br>
     <input class="btn btn-primary" type="submit" id="submit" value="{{ $modo }} Visitor">
 
-    <a class="btn btn-primary" href="{{ url('visitor') }}">Return</a>
+    <a class="btn btn-primary" href="{{ url('admin') }}">Return</a>
 
 </div>

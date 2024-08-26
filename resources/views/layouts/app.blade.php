@@ -16,7 +16,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -25,11 +25,11 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm py-3">
             <div class="container">
                 <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">
-                   <h3>Career Training College</h3> 
+                    <h3>Career Training College</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
@@ -40,12 +40,14 @@
                             <a class="nav-link font-weight-bold" href="{{ route('about') }}">{{ __('About Us') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link font-weight-bold" href="{{ route('events') }}">{{ __('Next Events') }}</a>
+                            <a class="nav-link font-weight-bold"
+                                href="{{ route('events') }}">{{ __('Next Events') }}</a>
                         </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="btn btn-outline-primary me-2"
+                                        href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             @if (Route::has('register'))
@@ -55,14 +57,16 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button"
-                                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    v-pre>
                                     {{ Auth::user()->name }} <i class="fas fa-user"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end border-0 shadow">
-                                    <a class="dropdown-item" href="{{ route('visitor.index') }}">{{ __('Visitor list') }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('admin') }}">{{ __('Visitor list') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }} <i class="fas fa-sign-out-alt"></i>
                                     </a>
@@ -76,13 +80,13 @@
                 </div>
             </div>
         </nav>
-        
+
         <!-- Añade margen superior al contenido principal para evitar que se superponga -->
         <div style="margin-top: 90px;">
             <!-- Aquí va el contenido principal de la página -->
         </div>
-        
-        
+
+
 
         <main class="py-4">
             @yield('content')

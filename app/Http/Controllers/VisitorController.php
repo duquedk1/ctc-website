@@ -5,16 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
+namespace App\Http\Controllers;
+
+use App\Models\Visitor;
+use Illuminate\Http\Request;
+
 class VisitorController extends Controller
 {
-
     /**
-     * Display a listing of the resource.
+     * Display the main view of the site (previously 'front').
      */
     public function index()
     {
         $data['visitors'] = Visitor::paginate(6);
-        return view('visitor.index', $data);
+        return view('index', $data); // View 'index.blade.php' (previously 'front.blade.php')
+    }
+
+    /**
+     * Display the admin view (previously 'index').
+     */
+    public function admin()
+    {
+        $data['visitors'] = Visitor::paginate(6);
+        return view('visitor.admin', $data); // View 'admin.blade.php' inside the 'visitor' folder
     }
 
     /**
@@ -26,11 +39,10 @@ class VisitorController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage and redirect to the admin view.
      */
     public function store(Request $request)
     {
-
         $att = [
             'name' => 'required|string|max:100',
             'lastName' => 'required|string|max:100',
@@ -44,12 +56,10 @@ class VisitorController extends Controller
             'required' => 'The :attribute is required'
         ];
         $this->validate($request, $att, $errorMessage);
-        //$data = request()-> all();
         $dataVisitors = request()->except('_token');
         Visitor::insert($dataVisitors);
-        return  redirect('visitor')->with('message', 'The record has been saved successfully!');
+        return redirect('admin')->with('message', 'The record has been saved successfully!');
     }
-
 
     /**
      * Display the specified resource.
@@ -58,6 +68,7 @@ class VisitorController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -66,6 +77,7 @@ class VisitorController extends Controller
         $visitor = Visitor::findOrFail($id);
         return view('visitor.edit', compact('visitor'));
     }
+
     /**
      * Update the specified resource in storage.
      */
@@ -86,31 +98,31 @@ class VisitorController extends Controller
         $this->validate($request, $att, $errorMessage);
         $dataVisitors = request()->except(['_token', '_method']);
         Visitor::where('id', '=', $id)->update($dataVisitors);
-        $visitor = Visitor::findOrFail($id);
-        //return redirect('visitor');
-        return redirect('visitor')->with('message', 'Visitor updated');
+        return redirect('admin')->with('message', 'Visitor updated');
     }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
         Visitor::destroy($id);
-        return redirect('visitor')->with('message', 'Visitor deleted');
+        return redirect('admin')->with('message', 'Visitor deleted');
     }
-    public function front()
-    {
-        $data['visitors'] = Visitor::paginate(6); 
-    return view('front', $data);
-    }
+
+    /**
+     * Display the 'About Us' page.
+     */
     public function about()
     {
-       
-    return view('about');
+        return view('about');
     }
+
+    /**
+     * Display the events page.
+     */
     public function events()
     {
-       
-    return view('events');
+        return view('events');
     }
 }
